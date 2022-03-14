@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Новый пост
+{% endblock %}
+
+{% block headlines %}
+{% endblock %}
+
+{% block content %}
+  {% include 'posts/includes/post_modify.html' with header='Новый пост' btn_text='Добавить' %}
+{%  endblock %}

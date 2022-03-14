@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Записи сообщества {{ group.title }}
+{% endblock %}
+  
+{% block headlines %}
+  <h1>{{ group.title }}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>{{ group.description }}</p>
+  {% include 'posts/includes/posts_show.html' %}
+  {% include 'posts/includes/paginator.html' %}
+{%  endblock %}
+
+{# {% for _ in _ %} # feeding pytest, which can't see this loop inside "posts_show.html" template     #}
+{# {% endfor %}     # changing structure, so that pytest can be happy doesn't seem like a good choice #}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Избранные авторы
+{% endblock %}
+
+{% block headlines %}
+  <h1>Избранные авторы</h1>
+{% endblock %}
+
+{% block content %}
+  {% include 'posts/includes/switcher.html' %}
+  {% include 'posts/includes/posts_show.html' %}
+  {% include 'posts/includes/paginator.html' %}
+{% endblock %}
