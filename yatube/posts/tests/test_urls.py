@@ -1,12 +1,9 @@
 from http import HTTPStatus
 
 from core.utils import clear_cache, get_login_redirect_url
-from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse
-from posts.models import Group, Post
-
-User = get_user_model()
+from posts.models import Group, Post, User
 
 
 class URLTest(TestCase):

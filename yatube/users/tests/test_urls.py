@@ -1,10 +1,8 @@
 from http import HTTPStatus
 
 from core.utils import get_login_redirect_url
-from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
-
-User = get_user_model()
+from posts.models import User
 
 
 class URLTest(TestCase):

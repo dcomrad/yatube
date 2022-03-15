@@ -29,9 +29,9 @@ def index(request):
 def follow_index(request):
     template = 'posts/follow.html'
 
-    followings = (follow.author for follow in request.user.follower.all())
     paginated_posts = Paginator(
-        Post.objects.filter(author__in=followings), PER_PAGE
+        Post.objects.filter(author__following__user=request.user).all(),
+        PER_PAGE
     )
     page_obj = paginated_posts.get_page(request.GET.get('page') or 1)
 
@@ -153,7 +153,8 @@ def profile_follow(request, username):
 
 @login_required
 def profile_unfollow(request, username):
-    Follow.objects.get(
+    get_object_or_404(
+        Follow,
         user=request.user,
         author=get_object_or_404(get_user_model(), username=username)
     ).delete()

@@ -2,6 +2,8 @@ from core.models import CreatedModel
 from django.contrib.auth import get_user_model
 from django.db import models
 
+User = get_user_model()
+
 
 class Group(models.Model):
     title = models.CharField(
@@ -16,11 +18,12 @@ class Group(models.Model):
         verbose_name='Описание группы'
     )
 
+    class Meta:
+        verbose_name = 'Группа'
+        verbose_name_plural = 'Группы'
+
     def __str__(self):
         return self.title
-
-
-User = get_user_model()
 
 
 class Post(CreatedModel):
@@ -68,7 +71,7 @@ class Comment(CreatedModel):
         User,
         on_delete=models.CASCADE,
         related_name='comments',
-        verbose_name='Автор поста'
+        verbose_name='Автор комментария'
     )
     post = models.ForeignKey(
         Post,
@@ -99,3 +102,14 @@ class Follow(models.Model):
         related_name='following',
         verbose_name='Пользователь на которого оформлена подписка'
     )
+
+    def __str__(self):
+        return f'{self.user} -> {self.author}'
+
+    class Meta:
+        verbose_name = 'Подписчик'
+        verbose_name_plural = 'Подписчики'
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'author'],
+                                    name='unique subscription')
+        ]
