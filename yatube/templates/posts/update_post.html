@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Редактировать пост
+{% endblock %}
+
+{% block headlines %}
+{% endblock %}
+
+{% block content %}
+  {% include 'posts/includes/post_modify.html' with header='Редактировать пост' btn_text='Сохранить' %}
+{%  endblock %}

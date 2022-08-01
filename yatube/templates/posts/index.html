@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Последние обновления на сайте
+{% endblock %}
+
+{% block headlines %}
+  <h1>Последние обновления на сайте</h1>
+{% endblock %}
+
+{% block content %}
+  {% include 'posts/includes/switcher.html' %}
+  {% include 'posts/includes/posts_show.html' %}
+  {% include 'posts/includes/paginator.html' %}
+{% endblock %}

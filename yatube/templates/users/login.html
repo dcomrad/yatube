@@ -1,0 +1,14 @@
+{% extends "users/users_base.html" %}
+{% load user_filters %}
+
+{% block title %}
+  Войти
+{% endblock %}
+
+{% block card_header %}
+  Войти на сайт
+{% endblock %}
+
+{% block card_body %}
+  {% include 'users/includes/form.html' with btn_text='Войти' show_forget_pwd_link=True %}
+{% endblock %}
